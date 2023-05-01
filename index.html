@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tip Calculator</h1>
+    <div class="main">
+        <div class="column1">
+            <p>Total bill</p>
+        <input id="bill" type="number" placeholder="$" required> 
+        <div class="no_of_p">
+            <p>Number of people</p>
+            <input type="number" id="no_of_people" required>
+        </div>
+        <div class="billpercent">
+            <p>Tip %</p>
+            <div class="tip">
+            <button id="service" value="0.05" onclick="tipCalculator(0.05)">5%</button>
+            <button id="service" value="0.1" onclick="tipCalculator(0.1)">10%</button>
+            <button id="service" value="0.15" onclick="tipCalculator(0.15)">15%</button>
+            <button id="service" value="0.20" onclick="tipCalculator(0.20)">20%</button>
+            <button id="service" value="0.25" onclick="tipCalculator(0.25)">25%</button>
+            <button id="service" value="0.25" onclick="tipCalculator(0.3)">30%</button>
+            <button id="service" value="0.25" onclick="tipCalculator(0.35)">35%</button>
+            <button id="service" value="0.25" onclick="tipCalculator(0.4)">40%</button>
+
+
+
+        </div>
+    </div>
+        </div>
+        <div class="column2">
+        <span class=tip_per_p id="tip_per_person">Tip per person <br><span class="rs">Rs<span class="amt" id="tipamt"> 0.00</span></span></span><br><br><br>
+        <span class=total_per_p id="total_per_person">Total per person <br><span class="rs">Rs <span class="amt" id="tipamt1"> 0.00</span></span></span>
+        </div>
+    </div>
+    <script> 
+        let bill = 0;
+        let no_of_people = 0;
+        let custom = 0;
+        let service = 0;
+        let total = 0;
+        let tip=0;
+        let tip_per_p=0;
+        let tipamt=0;
+        let tipamt1=0;
+        
+        function tipCalculator(percent){
+            custom= parseFloat(document.querySelector('input[type="number"]').value);
+            bill = parseInt(document.getElementById("bill").value);
+            no_of_people = parseInt(document.getElementById("no_of_people").value);
+        
+            if (bill === 0 || no_of_people === 0){
+                alert("Bill number or Number of people are empty");
+            }
+            else{
+                tip=bill*percent/no_of_people;
+                total = bill/no_of_people;
+                total = total+tip;
+                tip=parseFloat(tip.toFixed(2));
+                total=parseFloat(total.toFixed(2));
+                document.getElementById("tipamt").innerHTML = tip;
+                document.getElementById("tipamt1").innerHTML = total;
+                
+            }  
+        }
+        </script>
+        
+</body>
+</html>
